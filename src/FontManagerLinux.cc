@@ -4,6 +4,8 @@
 #include "FontDescriptor.h"
 #include "ResultSet.h"
 
+#include <iostream>
+
 #if FC_MAJOR <= 2 && FC_MINOR <= 10 && FC_REVISION <= 91
 #error "This version of fontconfig isn't threadsafe."
 #endif
@@ -140,6 +142,7 @@ ResultSet *getResultSet(FcFontSet *fs) {
     return res;
 
   for (int i = 0; i < fs->nfont; i++) {
+    std::cout << "cnt:" << i << std::endl;
     res->push_back(createFontDescriptor(fs->fonts[i]));
   }
 
